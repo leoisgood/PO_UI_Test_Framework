@@ -10,7 +10,7 @@ driver_path = os.path.join(current, '../webdriver/chromedriver.exe')
 class Login_Page:
     def __init__(self):
         self.driver = webdriver.Chrome(executable_path=driver_path)
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(8)
         self.driver.maximize_window()
         self.driver.get('http://47.107.178.45/zentao/www/index.php?m=user&f=login')
         self.username_inputbox = self.driver.find_element(By.XPATH, '//input[@id="account"]')  # 属性 ==》页面上的控件

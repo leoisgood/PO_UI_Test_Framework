@@ -1,0 +1,18 @@
+element_one:
+  varaible_name: username_inputbox
+  element_name: 用户名输入框
+  locator_type: xpath
+  locator_value: //input[@name="account"]
+  time_out: 5
+element_two:
+  varaible_name: password_inputbox
+  element_name: 密码输入框
+  locator_type: xpath
+  locator_value: //input[@name="password"]
+  time_out: 5
+element_three:
+  varaible_name: login_button
+  element_name: 登录按钮
+  locator_type: xpath
+  locator_value: //input[@id="submit"]
+  time_out: 5

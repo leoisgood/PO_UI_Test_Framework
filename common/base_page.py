@@ -7,6 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from common.config_utils import local_config
 from common.log_utils import logger
+from common.browser import Browser
 
 
 class BasePage(object):
@@ -69,6 +70,10 @@ class BasePage(object):
         element = self.find_element(element_info)
         element.send_keys(content)
         logger.info('[%s]元素输入内容[%s]' % (element_info['element_name'], content))
+
+    def get_text(self,element_info):
+        element = self.find_element(element_info)
+        return element.text
 
     # 等待操作封装
     def wait(self, seconds=5):
@@ -167,4 +172,6 @@ class BasePage(object):
 
 
 if __name__ == '__main__':
-    pass
+    base_page = BasePage(Browser().get_driver())
+    base_page.open_url('http://47.107.178.45/zentao/www/index.php?m=user&f=login')
+    base_page.find_element()

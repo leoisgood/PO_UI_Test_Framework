@@ -1,18 +1,30 @@
-element_one:
-  varaible_name: username_inputbox
-  element_name: 用户名输入框
+companyname_showbox:
+  element_name: 公司名称
+  locator_page: main_page
   locator_type: xpath
-  locator_value: //input[@name="account"]
+  locator_value: //h1[@id="companyname"]
   time_out: 5
-element_two:
-  varaible_name: password_inputbox
-  element_name: 密码输入框
+myzone_link:
+  element_name: 我的地盘
+  locator_page: main_page
   locator_type: xpath
-  locator_value: //input[@name="password"]
+  locator_value: //li[@data-id="my"]
   time_out: 5
-element_three:
-  varaible_name: login_button
-  element_name: 登录按钮
+product_menu:
+  element_name: 我的产品
+  locator_page: main_page
   locator_type: xpath
-  locator_value: //input[@id="submit"]
+  locator_value: //li[@data-id="product"]
+  time_out: 5
+user_menu:
+  element_name: 我的姓名
+  locator_page: main_page
+  locator_type: xpath
+  locator_value: //span[@class="user-name"]
+  time_out: 5
+quit_button:
+  element_name: 退出按钮
+  locator_page: main_page
+  locator_type: xpath
+  locator_value: //a[@href="/zentao/www/index.php?m=user&f=logout"]
   time_out: 5

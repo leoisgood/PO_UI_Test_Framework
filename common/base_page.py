@@ -71,7 +71,7 @@ class BasePage(object):
         element.send_keys(content)
         logger.info('[%s]元素输入内容[%s]' % (element_info['element_name'], content))
 
-    def get_text(self,element_info):
+    def get_text(self, element_info):
         element = self.find_element(element_info)
         return element.text
 
@@ -160,7 +160,7 @@ class BasePage(object):
                 self.driver.switch_to.window(window_handle)
                 break
 
-    def screenshot_as_file_old(self, *screenshot_path):
+    def screenshot_as_file(self, *screenshot_path):
         current_dir = os.path.dirname(__file__)
         if len(screenshot_path) == 0:
             screenshot_filepath = local_config.screenshot_path
@@ -174,4 +174,3 @@ class BasePage(object):
 if __name__ == '__main__':
     base_page = BasePage(Browser().get_driver())
     base_page.open_url('http://47.107.178.45/zentao/www/index.php?m=user&f=login')
-    base_page.find_element()

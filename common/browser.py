@@ -5,7 +5,7 @@ from common.config_utils import local_config
 from common.log_utils import logger
 
 cur_path = os.path.dirname(__file__)
-default_path = os.path.join(cur_path, '..', '\webdriver\chromedriver.exe')
+default_path = os.path.join(cur_path, '..', local_config.driver_path)
 
 
 class Browser(object):
@@ -15,13 +15,13 @@ class Browser(object):
 
     def get_driver(self):
         if self.__driver_name.lower() == "chrome":
-            return self.__get_chrome_driver()
+            return self.get_chrome_driver()
         elif self.__driver_name.lower() == "firefox":
             return self.__get_firefox_driver()
         elif self.__driver_name.lower() == "edge":
             return self.__get_edge_driver()
 
-    def __get_chrome_driver(self):
+    def get_chrome_driver(self):
         chrome_options = Options()
         chrome_options.add_argument('--disable-gpu')  # 谷歌文档提到需要加上这个属性来规避bug
         chrome_options.add_argument('lang=zh_CN.UTF-8')  # 设置默认编码为utf-8
@@ -47,4 +47,6 @@ class Browser(object):
 
 
 if __name__ == '__main__':
-    Browser('chrome').get_browser_driver().get('http://47.107.178.45/zentao/www/index.php?m=user&f=login')
+    browser = Browser()
+    driver = browser.get_driver()
+    driver.get('http://47.107.178.45/zentao/www/index.php?m=user&f=login')

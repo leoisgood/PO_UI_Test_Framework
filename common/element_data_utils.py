@@ -7,10 +7,10 @@ yaml_path = os.path.join(cur_path, '..\\elements_info_datas\\login_page.yaml')
 
 class ElementDataUtils:
     def __init__(self, page_name='login_page'):
-        self.element_path = os.path.join(cur_path, '..\\elements_info_datas\\', page_name, 'yaml')
+        self.element_path = os.path.join(cur_path, '..\elements_info_datas', page_name+'.yaml')
 
     def get_element_info(self, locator_page='login_page'):
-        with open(yaml_path, encoding='utf-8') as f:
+        with open(self.element_path, encoding='utf-8') as f:
             data = yaml.load(f.read(), Loader=yaml.FullLoader)
             element_data = {}
             for i, j in data.items():    # 取出字典里的键值对，存入新的字典
@@ -22,5 +22,8 @@ class ElementDataUtils:
 
 
 if __name__ == '__main__':
-    elementdata = ElementDataUtils()
-    elementdata.get_element_info()
+    elementdata = ElementDataUtils('main_page')
+    # elements = elementdata.get_element_info()
+    main_elements = elementdata.get_element_info('main_page')
+    print(main_elements)
+    # print(elementdata.element_path)

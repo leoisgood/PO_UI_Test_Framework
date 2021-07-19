@@ -9,7 +9,6 @@ from common.selenium_base_case import SeleniumBaseCase
 class LoginTest(SeleniumBaseCase):
     def setUp(self) -> None:
         super().setUp()
-        print('123')
 
     def test_login_success(self):
         login_action = LoginAction(self.base_page.driver)

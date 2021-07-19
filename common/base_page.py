@@ -17,8 +17,11 @@ class BasePage(object):
 
     # 浏览器操作封装 -- > 二次封装
     def open_url(self, url):
-        self.driver.get(url)
-        logger.info('打开url地址:%s' % url)
+        try:
+            self.driver.get(url)
+            logger.info('打开url地址:%s' % url)
+        except Exception as e:
+            logger.error('不能打开指定的测试网址，原因是%s' % e.__str__())
 
     def set_browser_max(self):
         self.driver.maximize_window()
@@ -47,24 +50,40 @@ class BasePage(object):
 
     # 元素操作封装
     def find_element(self, element_info):
-        locator_type_name = element_info['locator_type']
-        locator_value_info = element_info['locator_value']
-        locator_timeout = element_info['time_out']
-        if locator_type_name == 'id':
-            locator_type = By.ID
-        elif locator_type_name == 'class':
-            locator_type = By.CLASS_NAME
-        elif locator_type_name == 'xpath':
-            locator_type = By.XPATH
-        element = WebDriverWait(self.driver, float(locator_timeout)) \
-            .until(lambda x: x.find_element(locator_type, locator_value_info))  # 显示等待
-        logger.info('[%s]元素识别成功' % element_info['element_name'])
-        return element
+        """
+        根据提供的元素信息参数，进行元素定位
+
+        :param element_info:元素信息，字典类型{....}
+        :return: element对象
+        """
+        try:
+            locator_type_name = element_info['locator_type']
+            locator_value_info = element_info['locator_value']
+            locator_timeout = element_info['time_out']
+            if locator_type_name == 'id':
+                locator_type = By.ID
+            elif locator_type_name == 'class':
+                locator_type = By.CLASS_NAME
+            elif locator_type_name == 'xpath':
+                locator_type = By.XPATH
+            element = WebDriverWait(self.driver, float(locator_timeout)) \
+                .until(lambda x: x.find_element(locator_type, locator_value_info))  # 显示等待
+            logger.info('[%s]元素识别成功' % element_info['element_name'])
+            return element
+        except Exception as e:
+            logger.error('[%s]元素不能识别，原因是%s' % (element_info['element_name'], e.__str__()))
+            self.screenshot_as_file()
+        # finally:
+        #     if element is None:
+        #         element = ''
 
     def click(self, element_info):
         element = self.find_element(element_info)
-        element.click()
-        logger.info('[%s]元素点击成功' % element_info['element_name'])
+        try:
+            element.click()
+            logger.info('[%s]元素点击成功' % element_info['element_name'])
+        except Exception as e:
+            logger.error('[%s]元素点击成功,原因是%s' % (element_info['element_name'], e.__str__()))
 
     def input(self, element_info, content):
         element = self.find_element(element_info)

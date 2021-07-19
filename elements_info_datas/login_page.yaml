@@ -2,7 +2,7 @@ username_inputbox:
   element_name: 用户名输入框
   locator_page: login_page
   locator_type: xpath
-  locator_value: //input[@name="account"]
+  locator_value: //input[@name="account1"]
   time_out: 5
 password_inputbox:
   element_name: 密码输入框

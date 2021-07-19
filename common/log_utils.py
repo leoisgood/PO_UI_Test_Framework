@@ -34,5 +34,4 @@ class LogUtils(object):
 logger = LogUtils().logger
 
 if __name__=='__main__':
-
     logger.info( 'newdream' )

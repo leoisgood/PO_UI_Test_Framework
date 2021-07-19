@@ -36,6 +36,11 @@ class Config:
         return screenshot_path_value
 
     @property
+    def log_path(self):
+        log_path_value = self.cfg.get('default', 'log_path')
+        return log_path_value
+
+    @property
     def user_name(self):
         user_name_value = self.cfg.get('default', 'user_name')
         return user_name_value

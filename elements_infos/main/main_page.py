@@ -9,7 +9,7 @@ from common.element_data_utils import ElementDataUtils
 import time
 
 current = os.path.dirname(__file__)
-driver_path = os.path.join(current, '../../webdriver/chromedriver.exe')
+driver_path = os.path.join(current, '../../webdriver/chromedriver-bak-2.exe')
 
 """页面作为类 控件作为属性 操作作为方法"""
 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     # driver = Browser().get_driver()
     # print(driver)
     current = os.path.dirname(__file__)
-    driver_path = os.path.join(current, '../../webdriver/chromedriver.exe')
+    driver_path = os.path.join(current, '../../webdriver/chromedriver-bak-2.exe')
     driver = webdriver.Chrome(executable_path=driver_path)
     login_page = LoginPage(driver)
     login_page.open_url('http://47.107.178.45/zentao/www/index.php?m=user&f=login')

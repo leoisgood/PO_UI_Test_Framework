@@ -50,8 +50,23 @@ class Config:
         password_value = self.cfg.get('default', 'password')
         return password_value
 
+    @property
+    def testdata_path(self):
+        testdata_path_value = self.cfg.get('default', 'testdata_path')
+        return testdata_path_value
+
+    @property
+    def case_path(self):
+        case_path_value = self.cfg.get('default', 'case_path')
+        return case_path_value
+
+    @property
+    def report_path(self):
+        report_path_value = self.cfg.get('default', 'report_path')
+        return report_path_value
+
 
 local_config = Config()
 
 if __name__ == '__main__':
-    print(Config().driver_path, Config().url, local_config.time_out)
+    print(local_config.testdata_path)

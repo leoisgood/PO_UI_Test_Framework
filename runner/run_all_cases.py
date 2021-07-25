@@ -8,6 +8,9 @@ import os
 import unittest
 from common import HTMLTestReportCN
 from common.config_utils import local_config
+from common import zip_utils
+from common.email_utils import EmailUtils
+
 
 current_path = os.path.dirname(__file__)
 print(current_path)
@@ -40,8 +43,9 @@ class RunAllCases:
                                                  tester='Leo.liu')
         runner.run(all_suite)
         fp.close()
-        return dir_path
+        return dir_path     # 自动化测试报告的路径
 
 
 if __name__ == '__main__':
     dir_path = RunAllCases().run()
+    EmailUtils(local_config.smtp_subject, dir_path).zip_send_mail()

@@ -22,7 +22,7 @@ class LoginPage(BasePage):
         #                           'locator_type': 'xpath',
         #                           'locator_value': '//button[@id="submit"]',
         #                           'time_out': 5}
-        elements = ElementDataUtils('login_page').get_element_info('login_page')
+        elements = ElementDataUtils('login').get_element_info('login_page')
         self.username_inputbox = elements['username_inputbox']
         self.password_inputbox = elements['password_inputbox']
         self.login_button = elements['login_button']
@@ -48,7 +48,7 @@ class LoginPage(BasePage):
 
 if __name__ == '__main__':
     current = os.path.dirname(__file__)
-    driver_path = os.path.join(current, '../../webdriver/chromedriver-bak-2.exe')
+    driver_path = os.path.join(current, '../../webdriver/chromedriver.exe')
     driver = webdriver.Chrome(executable_path=driver_path)
     login_page = LoginPage(driver)
     login_page.open_url('http://47.107.178.45/zentao/www/index.php?m=user&f=login')

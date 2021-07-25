@@ -7,8 +7,8 @@ yaml_path = os.path.join(cur_path, '..\\elements_info_datas\\login_page.yaml')
 
 
 class ElementDataUtils:
-    def __init__(self, page_name='login_page'):
-        self.element_path = os.path.join(cur_path, '..\elements_info_datas', page_name + '.yaml')
+    def __init__(self, module_name='login_suite'):
+        self.element_path = os.path.join(cur_path, '..', local_config.element_info_path, module_name, module_name + '_page.yaml')
 
     def get_element_info(self, locator_page='login_page'):
         with open(self.element_path, encoding='utf-8') as f:
@@ -23,8 +23,8 @@ class ElementDataUtils:
 
 
 if __name__ == '__main__':
-    elementdata = ElementDataUtils('main_page')
+    elementdata = ElementDataUtils('login')
     # elements = elementdata.get_element_info()
-    main_elements = elementdata.get_element_info('main_page')
+    main_elements = elementdata.get_element_info('login_page')
     print(main_elements)
     # print(elementdata.element_path)

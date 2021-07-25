@@ -18,7 +18,7 @@ class MainPage(BasePage):
     def __init__(self, driver):
         """ 登陆成功之后才能识别元素"""
         super().__init__(driver)
-        elements = ElementDataUtils('main_page').get_element_info('main_page')
+        elements = ElementDataUtils('main').get_element_info('main_page')
         self.companyname_showbox = elements['companyname_showbox']
         self.myzone_link = elements['myzone_link']
         self.product_menu = elements['product_menu']

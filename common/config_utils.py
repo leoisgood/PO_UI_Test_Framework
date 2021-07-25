@@ -31,6 +31,11 @@ class Config:
         return time_out_value
 
     @property
+    def element_info_path(self):
+        element_info_path_value = self.cfg.get('default', 'element_info_path')
+        return element_info_path_value
+
+    @property
     def screenshot_path(self):
         screenshot_path_value = self.cfg.get('default', 'screenshot_path')
         return screenshot_path_value

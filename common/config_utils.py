@@ -2,7 +2,7 @@ import os
 import configparser
 
 cur_path = os.path.dirname(__file__)
-config_path = os.path.join(cur_path, '..\config\config.ini')
+config_path = os.path.join(cur_path, '../config/config.ini')
 
 
 class Config:
@@ -105,3 +105,4 @@ local_config = Config()
 
 if __name__ == '__main__':
     print(local_config.testdata_path)
+    # print(config_path)

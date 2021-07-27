@@ -1,4 +1,7 @@
 import os
+import platform
+import sys
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from common.config_utils import local_config
@@ -10,8 +13,15 @@ default_path = os.path.join(cur_path, '..', local_config.driver_path)
 
 class Browser(object):
     def __init__(self, driver_path=default_path, driver_name=local_config.driver_name):
+        """
+        Mac OS X: 'darwin', windows:'win32', linux:'linux', Windows/Cygwin:'cygwin'
+        浏览器webdriver生成
+        :param driver_path:
+        :param driver_name:
+        """
         self.__driver_path = driver_path
         self.__driver_name = driver_name
+        self.__system_name = sys.platform
 
     def get_driver(self):
         if self.__driver_name.lower() == "chrome":
@@ -27,10 +37,17 @@ class Browser(object):
         chrome_options.add_argument('lang=zh_CN.UTF-8')  # 设置默认编码为utf-8
         chrome_options.add_experimental_option('useAutomationExtension', False)  # 取消chrome受自动控制提示
         chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])  # 取消chrome受自动控制提示
-        chrome_driver_path = os.path.join(self.__driver_path, 'chromedriver')
-        driver = webdriver.Chrome(options=chrome_options, executable_path=chrome_driver_path)
-        logger.info('初始化并启动谷歌浏览器')
-        return driver
+        if self.__system_name == 'darwin':  # 判断当前操作系统是否是mac os
+            chrome_driver_path = os.path.join(self.__driver_path, 'chromedriver')
+            print(chrome_driver_path)
+            driver = webdriver.Chrome(options=chrome_options, executable_path=chrome_driver_path)
+            logger.info('初始化并启动谷歌浏览器')
+            return driver
+        else:
+            chrome_driver_path = os.path.join(self.__driver_path, 'chromedriver.exe')
+            driver = webdriver.Chrome(options=chrome_options, executable_path=chrome_driver_path)
+            logger.info('初始化并启动谷歌浏览器')
+            return driver
 
     def __get_firefox_driver(self):
         firefox_driver_path = os.path.join(self.__driver_path, 'geckodriver')

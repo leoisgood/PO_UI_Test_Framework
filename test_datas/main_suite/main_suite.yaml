@@ -3,7 +3,7 @@ test_quit:
   test_case_name: 验证是否能成功退出
   test_class: QuitTest
   is_run: 是
-  expect_result: 用户登录1
+  expect_result: 用户登录
   fail_message: test_quit用例执行失败
   test_parameter:
     username:

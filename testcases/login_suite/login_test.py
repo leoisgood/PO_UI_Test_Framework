@@ -17,7 +17,7 @@ class LoginTest(SeleniumBaseCase):
     def setUp(self) -> None:
         super().setUp()
 
-    @unittest.skipIf(test_data_utils.get_is_run('test_login_success'), '登录成功测试用例跳过')  # 使用类属性，可以提供给实例方法使用
+    # @unittest.skipIf(test_data_utils.get_is_run('test_login_success'), '登录成功测试用例跳过')  # 使用类属性，可以提供给实例方法使用
     def test_login_success(self):
         print(self.test_data_utils.get_is_run('test_login_success'))
         test_case_data = self.test_data['test_login_success']
@@ -30,7 +30,7 @@ class LoginTest(SeleniumBaseCase):
         self.assertEqual(actual_result, test_case_data['expect_result'], 'test_login_success执行失败')
         self.base_page.screenshot_as_file()
 
-    @unittest.skipIf(test_data_utils.get_is_run('test_login_success'), '登录失败测试用例跳过')  # 使用类属性，可以提供给实例方法使用
+    # @unittest.skipIf(test_data_utils.get_is_run('test_login_success'), '登录失败测试用例跳过')  # 使用类属性，可以提供给实例方法使用
     def test_login_fail(self):
         test_case_data = self.test_data['test_login_fail']
         self._testMethodDoc = test_case_data['test_case_name']

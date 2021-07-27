@@ -48,4 +48,4 @@ class RunAllCases:
 
 if __name__ == '__main__':
     dir_path = RunAllCases().run()
-    EmailUtils(local_config.smtp_subject, dir_path).zip_send_mail()
+    # EmailUtils(local_config.smtp_subject, dir_path).zip_send_mail()
